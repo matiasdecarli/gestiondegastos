@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 40px;
@@ -42,7 +42,7 @@
       }
 
     </style>
-    <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -72,25 +72,5 @@
         <button class="btn btn-large btn-primary" type="submit">Ingresar</button>
       </form>
 
-    </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Sign in · Twitter Bootstrap_files/jquery.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-transition.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-alert.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-modal.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-dropdown.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-scrollspy.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-tab.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-tooltip.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-popover.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-button.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-collapse.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-carousel.js"></script>
-    <script src="./Sign in · Twitter Bootstrap_files/bootstrap-typeahead.js"></script>
-
-  
-
+    </div> <!-- /container -->     
 </body></html>
