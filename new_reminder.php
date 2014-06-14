@@ -1,7 +1,7 @@
 <?php 
     session_start();
     if (!isset ($_SESSION["user"])){  
-      header('Location: ingresar.php');  
+      header('Location: enter.php');  
     }
     
     include('functions.php');    
@@ -70,6 +70,32 @@
       <hr>
     </div> 
   </body>
+  <script type="text/javascript">
+        $("#fecha").datepicker({ 
+            altField: "#fechaBD",
+            altFormat: "yy-mm-dd", 
+            minDate: "+0d" 
+          });   
+
+        $("#type").change(function(){
+           if ($("#type").val()!=0){
+              $.ajax({
+                 type: 'POST',         
+                 url: 'fillCombo.php',
+                 data: {id: $('#type').val() },
+                 success: function(data) {
+                    $('#concept').empty();
+                    $('#concept').append(data);
+                 }
+               });
+           }
+           else{
+              //clean
+              $('#concept').empty();
+              $('#concept').append('<option value="0">-Selccionar-</option>');
+           }
+        });   
+  </script>
 <?php
   include('footer.html');
 ?>

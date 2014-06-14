@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset ($_SESSION["user"])){  
-      header('Location: ingresar.php');  
+      header('Location: enter.php');  
     }
     include('header.html');
 ?>
@@ -46,7 +46,6 @@
           </table>
         <hr>
     </div> 
-    <script src="/js/jquery.js"></script> 
   </body>
 <?php 
   include('footer.html');

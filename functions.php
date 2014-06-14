@@ -3,7 +3,18 @@
 	function getConnection(){
 
 		//local	
-		$mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
+		// $mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
+
+		//prod		
+		$services_json = json_decode(getenv("VCAP_SERVICES"),true);
+		$mysql_config = $services_json["mysql-5.1"][0]["credentials"];
+		$username = $mysql_config["username"];
+		$password = $mysql_config["password"];
+		$hostname = $mysql_config["hostname"];
+		$port = $mysql_config["port"];
+		$db = $mysql_config["name"];
+		
+		$mysqli = new mysqli($hostname, $username, $password,$db, $port);		 		
 
 		if (mysqli_connect_errno()) {
 		    printf("Connect failed: %s\n", mysqli_connect_error());
@@ -12,17 +23,7 @@
 		$mysqli->query("SET NAMES 'UTF8'");
 		return $mysqli;	  
 
-		//prod		
-		// $services_json = json_decode(getenv("VCAP_SERVICES"),true);
-		// $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
-		// $username = $mysql_config["username"];
-		// $password = $mysql_config["password"];
-		// $hostname = $mysql_config["hostname"];
-		// $port = $mysql_config["port"];
-		// $db = $mysql_config["name"];
-		// $link = mysql_connect("$hostname:$port", $username, $password);
-		// $db_selected = mysql_select_db($db, $link);
-		// mysql_query("SET NAMES 'UTF8'");
+		mysql_query("SET NAMES 'UTF8'");
 	}
 
 	function getCombo($concept) {

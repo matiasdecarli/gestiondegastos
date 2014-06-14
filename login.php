@@ -22,12 +22,12 @@
 						header('Location: index.php');}
 				 else{
 					 $mensaje = "Password Incorrecto";
-					header('Location: ingresar.php?mensaje='.$mensaje);}
+					header('Location: enter.php?mensaje='.$mensaje);}
 			}
 			else{
 				mysql_free_result($result);
 				$mensaje = "Usuario no existente";
-				header('Location: ingresar.php?mensaje='.$mensaje);
+				header('Location: enter.php?mensaje='.$mensaje);
 				}
 			}
 			catch(PDOException $e) {
@@ -37,7 +37,7 @@
 		}	
 		else{
 			$mensaje = "Datos incompletos";
-			header('Location: ingresar.php?mensaje='.$mensaje);
+			header('Location: enter.php?mensaje='.$mensaje);
 		}			
 	    			
 ?>

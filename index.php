@@ -71,7 +71,7 @@
       <div class="jumbotron">
         <h2>Próximos Vencimientos</h2>  
         <?php    
-          $remainders = getReminders(10);        
+          $remainders = getReminders(100);        
         ?>      
       </div>    
       <table class="table table-striped">

@@ -1,7 +1,7 @@
 <?php     
     session_start();
     if (!isset ($_SESSION["user"])){  
-      header('Location: ingresar.php');  
+      header('Location: enter.php');  
     }
     include('functions.php');    
     $types = getCombo('tipo');
@@ -69,7 +69,7 @@
     </div> 
   </body>  
   <script type="text/javascript">
-        $( "#fecha" ).datepicker({ 
+        $("#fecha").datepicker({ 
             altField: "#fechaBD",
             altFormat: "yy-mm-dd", 
             maxDate: "+0d" 
