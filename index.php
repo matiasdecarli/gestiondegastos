@@ -71,7 +71,7 @@
       <div class="jumbotron">
         <h2>Próximos Vencimientos</h2>  
         <?php    
-          $remainders = getReminders(100);        
+          $reminders = getReminders(100);        
         ?>      
       </div>    
       <table class="table table-striped">
@@ -85,7 +85,7 @@
           </thead>
           <tbody>
             <?php                                
-                foreach ($remainders as $reminder){                                                                                                
+                foreach ($reminders as $reminder){                                                                                                
                       $date = new DateTime($reminder['fecha']);
                       if ($reminder['fecha']<=date('Y-m-d'))
                         echo '<tr class="error">';                           
