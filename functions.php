@@ -6,15 +6,14 @@
 		// $mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
 
 		//prod		
-		$services_json = json_decode(getenv("VCAP_SERVICES"),true);
-		$mysql_config = $services_json["mysql-5.1"][0]["credentials"];
-		$username = $mysql_config["username"];
-		$password = $mysql_config["password"];
-		$hostname = $mysql_config["hostname"];
-		$port = $mysql_config["port"];
-		$db = $mysql_config["name"];
-		
-		$mysqli = new mysqli($hostname, $username, $password,$db, $port);		 		
+		$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+		$server = getenv("SERVER");
+		$username = getenv("USERNAME");
+		$password = getenv("PASSWORD");
+		$db = getenv("DB");
+
+		$mysqli = new mysqli($server, $username, $password, $db);
 
 		if (mysqli_connect_errno()) {
 		    printf("Connect failed: %s\n", mysqli_connect_error());
