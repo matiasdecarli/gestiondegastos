@@ -1,24 +1,24 @@
-<?php 	
+<?php
 	session_start();
-	include ("functions.php"); 	
-		
+	include ("functions.php");
+
 	if(trim($_POST["user"]) && trim($_POST["password"])){
 		$usuario = strtolower(htmlentities($_POST["user"], ENT_QUOTES));
 		$password = md5($_POST["password"]);
 
-		$sql = 'SELECT * FROM usuario WHERE user=\''.$usuario.'\'';
+		$sql = 'SELECT * FROM usuario WHERE user=\''.$usuario.'\' and activo=1';
 	    try {
 	        $mysqli = getConnection();
 	        $res = $mysqli->query($sql);
 	        $result = array();
-	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){ 
+	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){
 	        	$result[] = $row;
-	        }	      
+	        }					
 	        if ($result[0]){
 	        	if($result[0]['password'] == $password){
 						//session_start();
-						$_SESSION["user"] = $result[0]['user'];	
-						$_SESSION["user_id"] = $result[0]['id'];						  						
+						$_SESSION["user"] = $result[0]['user'];
+						$_SESSION["user_id"] = $result[0]['id'];
 						header('Location: index.php');}
 				 else{
 					 $mensaje = "Password Incorrecto";
@@ -33,12 +33,11 @@
 			catch(PDOException $e) {
 		        echo '{"error":{"text":'. $e->getMessage() .'}}';
 		        die();
-		    }		
-		}	
+		    }
+		}
 		else{
 			$mensaje = "Datos incompletos";
 			header('Location: enter.php?mensaje='.$mensaje);
-		}			
-	    			
-?>
+		}
 
+?>

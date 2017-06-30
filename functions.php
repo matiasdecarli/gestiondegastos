@@ -2,10 +2,10 @@
 
 	function getConnection(){
 
-		//local	
-		// $mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
+		//local
+		//$mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
 
-		//prod		
+		//prod
 		$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 		$server = getenv("SERVER");
@@ -20,7 +20,7 @@
 		    exit();
 		}
 		$mysqli->query("SET NAMES 'UTF8'");
-		return $mysqli;	  
+		return $mysqli;
 
 		mysql_query("SET NAMES 'UTF8'");
 	}
@@ -31,9 +31,9 @@
 	        $mysqli = getConnection();
 	        $res =  $mysqli->query($sql);
 	        $result = array();
-	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){ 
+	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){
 	        	$result[] = $row;
-	        }	        
+	        }
 	        return $result;
 	    } catch(PDOException $e) {
 	        echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -42,7 +42,7 @@
 	}
 
 	function getLastMovements($limit){
-		 $sql = "SELECT 
+		 $sql = "SELECT
 							m.id as id,
 				            m.fecha as fecha,
 				            t.nombre as tipo,
@@ -51,20 +51,20 @@
 				            c.nombre as concepto,
 				            a.nombre as autor
 				FROM movimiento as m
-				           left join concepto as c on m.concepto = c.id    
-				           left join tipo as t on m.tipo = t.id     
+				           left join concepto as c on m.concepto = c.id
+				           left join tipo as t on m.tipo = t.id
 				           left join usuario as a on a.id=m.autor
 				WHERE
 				          m.activo=1
-	          	ORDER BY  
+	          	ORDER BY
 	          			m.fecha DESC, m.saved_at DESC limit ".$limit;
 	    try {
 	        $mysqli = getConnection();
 	        $res =  $mysqli->query($sql);
 	        $result = array();
-	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){ 
+	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){
 	        	$result[] = $row;
-	        }	        
+	        }
 	        return $result;
 	    } catch(PDOException $e) {
 	        echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -81,11 +81,11 @@
 	    } catch(PDOException $e) {
 	        echo '{"error":{"text":'. $e->getMessage() .'}}';
 	        die();
-	    }	
+	    }
 	}
 
 	function getMovement($id){
-		$sql = "SELECT 
+		$sql = "SELECT
 							m.id as id,
 				            m.fecha as fecha,
 				            t.nombre as tipo,
@@ -95,8 +95,8 @@
 				            m.comentarios as comentarios,
 				            a.nombre as autor
 				FROM movimiento as m
-				           left join concepto as c on m.concepto = c.id    
-				           left join tipo as t on m.tipo = t.id     
+				           left join concepto as c on m.concepto = c.id
+				           left join tipo as t on m.tipo = t.id
 				           left join usuario as a on a.id=m.autor
 				WHERE
 						  m.id = ".$id." AND
@@ -105,9 +105,9 @@
 	        $mysqli = getConnection();
 	        $res =  $mysqli->query($sql);
 	        $result = array();
-	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){ 
+	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){
 	        	$result[] = $row;
-	        }	        
+	        }
 	        return $result[0];
 	    } catch(PDOException $e) {
 	        echo '{"error":{"text":'. $e->getMessage() .'}}';
@@ -116,26 +116,26 @@
 	}
 
 	function getReminders($limit) {
-	   $sql = "SELECT 
+	   $sql = "SELECT
 					r.id as id,
 			        r.fecha as fecha,
 			        r.importe as importe,
 			        mr.nombre as concepto,
 			        a.nombre as autor
 				FROM recordatorio as r
-				       left join motivo_recordatorio as mr on r.motivo_recordatorio = mr.id    
+				       left join motivo_recordatorio as mr on r.motivo_recordatorio = mr.id
 				       left join usuario as a on a.id=r.autor
 				WHERE
 				      r.activo=1
-				ORDER BY  
+				ORDER BY
 				    r.fecha ASC, r.saved_at ASC limit ".$limit;
 	    try {
 	        $mysqli = getConnection();
 	        $res =  $mysqli->query($sql);
 	        $result = array();
-	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){ 
+	        while ($row=$res->fetch_array(MYSQLI_ASSOC)){
 	        	$result[] = $row;
-	        }	        
+	        }
 	        return $result;
 	    } catch(PDOException $e) {
 	        echo '{"error":{"text":'. $e->getMessage() .'}}';
