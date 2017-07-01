@@ -33,7 +33,7 @@
             if (date('d')>8){
                 //calcula cuanto falta para el mes que viene
                 $datetime1 = new DateTime();
-                $datetime2 = new DateTime(date('Y-m-8'));
+                $datetime2 = new DateTime(date('Y-m-10'));
                 $datetime2->add(new DateInterval('P1M'));
                 $interval = $datetime1->diff($datetime2);
 
@@ -41,29 +41,12 @@
             else{
                 //calcula para este
                 $datetime1 = new DateTime();
-                $datetime2 = new DateTime(date('Y-m-8'));
+                $datetime2 = new DateTime(date('Y-m-10'));
                 $interval = $datetime1->diff($datetime2);
             }
         ?>
-            Dias* para cobrar Alice: <?php echo $interval->format('%a'); ?></br>
-        <?php
-            if (date('d')>25){
-                //calcula cuanto falta para el mes que viene
-                $datetime1 = new DateTime();
-                $datetime2 = new DateTime(date('Y-m-25'));
-                $datetime2->add(new DateInterval('P1M'));
-                $interval = $datetime1->diff($datetime2);
-
-            }
-            else{
-                //calcula para este
-                $datetime1 = new DateTime();
-                $datetime2 = new DateTime(date('Y-m-25'));
-                $interval = $datetime1->diff($datetime2);
-            }
-        ?>
-            Dias* para cobrar Corrientes: <?php echo $interval->format('%a'); ?></br>
-            Dias* para cobrar Dumbledor: <?php echo $interval->format('%a'); ?>
+          Dias* para cobrar Corrientes: <?php echo $interval->format('%a'); ?></br>
+          Dias* para cobrar Dumbledor: <?php echo $interval->format('%a'); ?>
              <h6>* Para este calculo, se toma en cuenta 2 días antes de la fecha de vencimiento.</h6>
         </p>
         <a class="btn btn-large btn-success" href="new_movement.php">Agregar Movimiento</a>
