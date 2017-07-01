@@ -27,7 +27,7 @@
 					".$_POST['type'].",
           1,
 					".$_SESSION["user_id"].",
-					,null )";
+					null )";
 	    try {
 	      $mysqli = getConnection();
         $mysqli->query($sql);
