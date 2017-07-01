@@ -11,7 +11,7 @@
 					'".$_POST['fechaBD']."',
 					'".$_POST['importe']."',
 					".$_POST['concepto'].",
-					".$_POST['autor'].",1,null)";
+					".$_SESSION["user_id"].",1,null)";
     try {
         $mysqli = getConnection();
 		$mysqli->query($sql);
