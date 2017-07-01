@@ -1,15 +1,10 @@
 <?php
 
 	function getConnection(){
-
-		//local
-		//$mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
-
-		//prod
-		$server = getenv("SERVER");
-		$username = getenv("USERNAME");
-		$password = getenv("PASSWORD");
-		$db = getenv("DB");
+		$server = (getenv("SERVER"))?getenv("SERVER"):'localhost';
+		$username = (getenv("USERNAME"))?getenv("USERNAME"):'root';
+		$password = (getenv("PASSWORD"))?getenv("PASSWORD"):'root';
+		$db = (getenv("DB"))?getenv("DB"):'gestion-de-gastos';
 
 		$mysqli = new mysqli($server, $username, $password, $db);
 
