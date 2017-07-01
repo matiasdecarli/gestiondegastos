@@ -21,7 +21,7 @@
 			VALUES ( null,
           '".$saldo."',
 					'".$_POST['fechaBD']."',
-          '".$_POST['comentarios']."'
+          '".$_POST['comentarios']."',
           '".$_POST['importe']."',
           ".$_POST['concept'].",
 					".$_POST['type'].",
