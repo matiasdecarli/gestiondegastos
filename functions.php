@@ -6,8 +6,6 @@
 		//$mysqli = new mysqli("localhost","root","root","gestion-de-gastos");
 
 		//prod
-		$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
 		$server = getenv("SERVER");
 		$username = getenv("USERNAME");
 		$password = getenv("PASSWORD");

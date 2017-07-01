@@ -1,7 +1,7 @@
 <?php
     session_start();
-    if (!isset ($_SESSION["user"])){  
-      header('Location: enter.php');  
+    if (!isset ($_SESSION["user"])){
+      header('Location: enter.php');
     }
 
 	include('functions.php');
@@ -14,24 +14,26 @@
 		$saldo = $_POST['importe']+$saldo;	}
 	else{
 		//egreso
-		$saldo = $saldo - $_POST['importe'];	
+		$saldo = $saldo - $_POST['importe'];
 	}
 
-	$sql = "INSERT into movimiento 
+	$sql = "INSERT into movimiento
 			VALUES ( null,
+          '".$saldo."',
 					'".$_POST['fechaBD']."',
+          '".$_POST['comentarios']."'
+          '".$_POST['importe']."',
+          ".$_POST['concept'].",
 					".$_POST['type'].",
-					'".$_POST['importe']."',
-					'".$saldo."',
-					".$_POST['concept'].",
+          1,
 					".$_SESSION["user_id"].",
-					'".$_POST['comentarios']."',null,1 )";
+					,null )";
 	    try {
-	        $mysqli = getConnection();
-			$mysqli->query($sql);
-    		header('Location: index.php?resultado=ok');	       
+	      $mysqli = getConnection();
+        $mysqli->query($sql);
+        header('Location: index.php?resultado=ok');
 	    } catch(PDOException $e) {
-	    	echo '{"error":{"text":'. $e->getMessage() .'}}';
-	    	header('Location: index.php?resultado=error');	        
+        echo '{"error":{"text":'. $e->getMessage() .'}}';
+        header('Location: index.php?resultado=error');
 	    }
 ?>
