@@ -46,7 +46,7 @@
             }
         ?>
           Dias* para cobrar Corrientes: <?php echo $interval->format('%a'); ?></br>
-          Dias* para cobrar Dumbledor: <?php echo $interval->format('%a'); ?>
+          Dias* para cobrar Alice: <?php echo $interval->format('%a'); ?>
              <h6>* Para este calculo, se toma en cuenta 2 días antes de la fecha de vencimiento.</h6>
         </p>
         <a class="btn btn-large btn-success" href="new_movement.php">Agregar Movimiento</a>
